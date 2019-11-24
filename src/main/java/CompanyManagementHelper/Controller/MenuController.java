@@ -56,7 +56,7 @@ public class MenuController {
 
   @FXML
   private void workHoursView() throws IOException {
-    //App.setFXML("workHours");
+    App.setFXML("workHours");
   }
 
   @FXML
