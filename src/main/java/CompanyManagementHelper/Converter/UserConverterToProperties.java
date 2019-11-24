@@ -25,14 +25,9 @@ public class UserConverterToProperties {
     userEntity.setSalary(Double.parseDouble(userProperties.getSalary()));
     userEntity.setBankAccountNumber(userProperties.getBankAccountNumber());
     userEntity.setJobTime(Double.parseDouble(userProperties.getJobTime()));
+    userEntity.setDateOfBirth(LocalDate.parse(userProperties.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    userEntity.setWorkSince(LocalDate.parse(userProperties.getWorkSince(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
-    try{
-      userEntity.setDateOfBirth(LocalDate.parse(userProperties.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-      userEntity.setWorkSince(LocalDate.parse(userProperties.getWorkSince(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-    }catch (NullPointerException e){
-      userEntity.setDateOfBirth(null);
-      userEntity.setWorkSince(null);
-    }
 
     return userEntity;
   }

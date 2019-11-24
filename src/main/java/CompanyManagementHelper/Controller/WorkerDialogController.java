@@ -22,8 +22,7 @@ public class WorkerDialogController {
   Button editButton, deleteButton;
 
   UserProperties userProperties;
-  public static WorkerDialogController workerDialogController;
-  WorkerDialogService workerDialogService;
+  static WorkerDialogController workerDialogController;
 
   @FXML
   public void initialize() {
@@ -54,7 +53,7 @@ public class WorkerDialogController {
   @FXML
   public void deleteUser() {
     try {
-      workerDialogService.deleteUser(this.userProperties);
+      WorkerDialogService.deleteUserDB(this.userProperties);
       Stage stage = (Stage) Stage.getWindows();
       stage.close();
     }catch (NullPointerException e){

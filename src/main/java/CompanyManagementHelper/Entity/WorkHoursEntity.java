@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "godziny_pracy")
+@Table(name = "t_work_hours")
 public class WorkHoursEntity {
 
   @Id
@@ -12,13 +12,13 @@ public class WorkHoursEntity {
   @Column(name = "id")
   Integer id;
 
-  @Column(name = "id_pracownika")
+  @Column(name = "worker_id")
   Integer id_worker;
 
-  @Column(name = "godzina_startu")
+  @Column(name = "start_time")
   LocalDateTime startTime;
 
-  @Column(name = "godzina_zakonczenia")
+  @Column(name = "end_time")
   LocalDateTime endTime;
 
   public WorkHoursEntity(Integer id_worker, LocalDateTime startTime) {
