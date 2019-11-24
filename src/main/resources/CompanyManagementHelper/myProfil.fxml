@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-stylesheet ../style.css?>
+
+<AnchorPane prefHeight="684.9999000000025" prefWidth="1300.0" styleClass="main-background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.MyProfilController">
+  <children>
+    <ImageView fitHeight="200.5" fitWidth="200.5" layoutX="250.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-photo">
+      <image>
+        <Image url="@../images/avatarWorker.jpg" />
+      </image>
+    </ImageView>
+    <Label fx:id="nameLabel" layoutX="467.0" layoutY="101.0" prefWidth="68.0" styleClass="profil-label" text="lblName" />
+    <Label fx:id="surnameLabel" layoutX="467.0" layoutY="131.0" styleClass="profil-label" text="Nazwisko" />
+    <Label fx:id="emailLabel" layoutX="467.0" layoutY="161.0" styleClass="profil-label" text="email" />
+    <Label fx:id="roleLabel" layoutX="467.0" layoutY="191.0" styleClass="profil-label" text="Stanowisko" />
+    <Label fx:id="dateOfBirthLabel" layoutX="467.0" layoutY="221.0" styleClass="profil-label" text="Data urodzenia" />
+    <Label fx:id="adressLabel" layoutX="467.0" layoutY="251.0" styleClass="profil-label" text="Adress" />
+    <Separator layoutX="250.0" layoutY="318.0" prefWidth="1017.0" />
+    <Label fx:id="topLabel" layoutX="650.0" layoutY="12.0" text="Mój profil" textFill="WHITE">
+      <font>
+        <Font size="25.0" fx:id="x1" />
+      </font>
+    </Label>
+    <fx:include fx:id="menu" source="menu.fxml" layoutX="0.0" layoutY="5.0">
+      <Label fx:id="topLabel" font="$x1" layoutX="408.0" layoutY="12.0" text="Mój profil" />
+    </fx:include>
+  </children>
+</AnchorPane>

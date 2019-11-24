@@ -26,13 +26,23 @@ public class TaskEntity {
   @Column(name = "wykonawca", nullable = true)
   private String idUser;
 
-  public TaskEntity(String task, String status, Double estimatedTime) {
+  public TaskEntity(String task, String status, Double estimatedTime, Double endTimeTask, String idUser) {
     this.task = task;
     this.status = status;
     this.estimatedTime = estimatedTime;
+    this.endTimeTask = endTimeTask;
+    this.idUser = idUser;
   }
 
   public TaskEntity() {
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getTask() {

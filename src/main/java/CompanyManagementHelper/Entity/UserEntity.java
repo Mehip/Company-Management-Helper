@@ -1,9 +1,7 @@
 package CompanyManagementHelper.Entity;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "uzytkownicy")
@@ -14,46 +12,64 @@ public class UserEntity {
   @Column(name = "id")
   private Integer id;
 
-  @Column(name = "imie")
+  @Column(name = "name")
   private String name;
 
-  @Column(name = "nazwisko")
+  @Column(name = "surname")
   private String surname;
 
-  @Column(name = "pesel")
+  @Column(name = "email")
+  private String email;
+
+  @Column(name = "password")
+  private String password;
+
+  @Column(name = "pesel_nip")
   private String pesel;
 
-  @Column(name = "miejscowosc")
+  @Column(name = "date_of_birth")
+  private LocalDate dateOfBirth;
+
+  @Column(name = "city")
   private String city;
 
-  @Column(name = "ulica")
+  @Column(name = "street")
   private String street;
 
-  @Column(name = "nr_budynku")
+  @Column(name = "house_number")
   private String houseNumber;
 
-  @Column(name = "nr_mieszkania")
+  @Column(name = "flat_number")
   private String flatNumber;
 
-  @Column(name = "kod_pocztowy")
+  @Column(name = "postal_code")
   private String postalCode;
 
-  @Column(name = "stanowisko")
+  @Column(name = "role")
   private String role;
 
-  @Column(name = "wynagrodzenie")
+  @Column(name = "salary")
   private Double salary;
 
-  @Column(name = "nr_konta_bankowego")
+  @Column(name = "bank_account_number")
   private String bankAccountNumber;
 
-  @Column(name = "wielkosc_etatu")
+  @Column(name = "job_time")
   private Double jobTime;
 
-  public UserEntity(String name, String surname, String pesel, String city, String street, String houseNumber, String flatNumber, String postalCode, String role, Double salary, String bankAccountNumber, Double jobTime) {
+  @Column(name = "work_since")
+  private LocalDate workSince;
+
+  @Column(name = "vacation")
+  private Boolean vacation;
+
+  public UserEntity(String name, String surname, String email, String password, String pesel, LocalDate dateOfBirth, String city, String street, String houseNumber, String flatNumber, String postalCode, String role, Double salary, String bankAccountNumber, Double jobTime, LocalDate workSince) {
     this.name = name;
     this.surname = surname;
+    this.email = email;
+    this.password = password;
     this.pesel = pesel;
+    this.dateOfBirth = dateOfBirth;
     this.city = city;
     this.street = street;
     this.houseNumber = houseNumber;
@@ -63,9 +79,19 @@ public class UserEntity {
     this.salary = salary;
     this.bankAccountNumber = bankAccountNumber;
     this.jobTime = jobTime;
+    this.workSince = workSince;
+    this.vacation = false;
   }
 
   public UserEntity() {
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getName() {
@@ -84,12 +110,36 @@ public class UserEntity {
     this.surname = surname;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   public String getPesel() {
     return pesel;
   }
 
   public void setPesel(String pesel) {
     this.pesel = pesel;
+  }
+
+  public LocalDate getDateOfBirth() {
+    return dateOfBirth;
+  }
+
+  public void setDateOfBirth(LocalDate dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
   }
 
   public String getCity() {
@@ -162,5 +212,13 @@ public class UserEntity {
 
   public void setJobTime(Double jobTime) {
     this.jobTime = jobTime;
+  }
+
+  public LocalDate getWorkSince() {
+    return workSince;
+  }
+
+  public void setWorkSince(LocalDate workSince) {
+    this.workSince = workSince;
   }
 }

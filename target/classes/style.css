@@ -1,0 +1,88 @@
+.login-button {
+    -fx-box-shadow: inset -2px 0px 0px -50px #caefab;
+    -fx-background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    -fx-background-color: #77d42a;
+    -fx-border-radius: 42px;
+    -fx-display: inline-block;
+    -fx-cursor: pointer;
+    -fx-color: #306108;
+    -fx-font-family: Verdana;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 7px 24px;
+    -fx-text-decoration: none;
+}
+
+.login-button:hover {
+    -fx-background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+    -fx-background-color: #5cb811;
+}
+
+.login-button:selected {
+    -fx-position: relative;
+    -fx-top: 1px;
+}
+
+.login-background {
+    -fx-background-image: url("/images/loginBackground.jpg") repeat fixed 50% 50%;
+}
+
+.login-label {
+    -fx-font-family: "Arial Black", Gadget, sans-serif;
+    -fx-font-size: 20px;
+    -fx-letter-spacing: 0px;
+    -fx-word-spacing: 0px;
+    -fx-color: #000000;
+    -fx-font-weight: bold;
+    -fx-text-decoration: none solid rgb(174, 173, 174);
+    -fx-font-style: normal;
+    -fx-font-variant: normal;
+    -fx-text-transform: uppercase;
+}
+
+.login-fail-label {
+    -fx-font-family: Verdana, Geneva, sans-serif;
+    -fx-font-size: 15px;
+    -fx-letter-spacing: 2px;
+    -fx-word-spacing: 2px;
+    -fx-text-fill: #FF0000;
+    -fx-font-weight: bold;
+    -fx-text-decoration: none;
+    -fx-font-style: normal;
+    -fx-font-variant: normal;
+    -fx-text-transform: none;
+}
+
+.profile-photo {
+    -fx-image: url("/images/avatarWorker.jpg") repeat fixed 50% 50%;
+}
+
+.main-background {
+    -fx-background-color: rgb(255, 254, 255);
+}
+
+.profil-label {
+    -fx-text-fill: #000000;
+}
+
+.menu-style {
+    -fx-background-color: #364147;
+}
+
+.top-bar-style {
+    -fx-background-color: #000000;
+}
+
+.myprofil-menu {
+    -fx-graphic: url("/images/miniAvatarWorker.jpg") repeat fixed 50% 50%;
+}
+
+.menu-button {
+    -fx-background-color: #364147;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-insets: 5.0;
+}
+
+.menu-button:hover {
+    -fx-background-color: #50595E;
+}

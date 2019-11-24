@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.WorkerDialogController">
+  <children>
+    <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="608.0">
+      <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="57.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../images/avatarWorker.jpg" />
+          </image>
+        </ImageView>
+        <Label fx:id="nameLabel" layoutX="224.0" layoutY="41.0"/>
+        <Label fx:id="surnameLabel" layoutX="224.0" layoutY="69.0"/>
+        <Label fx:id="emailLabel" layoutX="57.0" layoutY="207.0"/>
+        <Label fx:id="jobTimeLabel" layoutX="224.0" layoutY="124.0"/>
+        <Label fx:id="workSinceLabel" layoutX="224.0" layoutY="152.0"/>
+        <Label fx:id="dateOfBirthLabel" layoutX="57.0" layoutY="237.0"/>
+        <Label fx:id="roleLabel" layoutX="225.0" layoutY="96.0"/>
+        <Label fx:id="adressLabel" layoutX="57.0" layoutY="327.0"/>
+        <Label fx:id="salaryLabel" layoutX="57.0" layoutY="357.0"/>
+        <Label fx:id="bankAccountNumberLabel" layoutX="57.0" layoutY="298.0"/>
+        <Label fx:id="peselNipLabel" layoutX="57.0" layoutY="268.0"/>
+        <Button fx:id="editButton" onAction="#editUser" layoutX="440.0" layoutY="359.0" mnemonicParsing="false" text="Edytuj"/>
+        <Button fx:id="deleteButton" onAction="#deleteUser" layoutX="525.0" layoutY="359.0" mnemonicParsing="false" text="Usuń"/>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

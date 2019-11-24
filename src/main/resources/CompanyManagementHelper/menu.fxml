@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="684.9999000000025" prefWidth="1300" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.MenuController">
+  <children>
+    <VBox layoutX="0.0" prefHeight="629.0" prefWidth="168.0" styleClass="menu-style" AnchorPane.bottomAnchor="0.0">
+      <children>
+        <Button fx:id="tasksButton" mnemonicParsing="false" onAction="#tasksView" prefHeight="68.0" prefWidth="168.0" styleClass="menu-button" text="Zadania"/>
+        <Button fx:id="workerButton" mnemonicParsing="false" onAction="#workerView" prefHeight="68.0" prefWidth="168.0" styleClass="menu-button" text="Pracownicy" />
+        <Button fx:id="workHoursButton" mnemonicParsing="false" onAction="#workHoursView" prefHeight="68.0" prefWidth="168.0" styleClass="menu-button" text="Godziny pracy" />
+        <Button fx:id="statisticButton" mnemonicParsing="false" onAction="#statisticView" prefHeight="68.0" prefWidth="168.0" styleClass="menu-button" text="Statystyki" />
+        <Button fx:id="aboutAplicationButton" mnemonicParsing="false" onAction="#aboutAplicationView" prefHeight="68.0" prefWidth="168.0" styleClass="menu-button" text="O aplikacji" />
+      </children>
+    </VBox>
+    <ImageView fitHeight="160.60647583007812" fitWidth="158.15276271028776" layoutX="10.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../images/logo.png" />
+      </image>
+    </ImageView>
+    <Pane layoutX="0.0" layoutY="1.0" prefHeight="56.0" prefWidth="1300" styleClass="top-bar-style">
+      <children>
+        <MenuButton layoutX="1200" layoutY="1.0" maxHeight="20.0" maxWidth="20.0" pickOnBounds="true" prefHeight="47.999908447265625" prefWidth="100.99995117187501" styleClass="myprofil-menu, profile-photo" text="">
+          <items>
+            <MenuItem fx:id="myProfile" mnemonicParsing="false" onAction="#myProfil" text="Mój profil" />
+            <MenuItem mnemonicParsing="false" onAction="#logout" text="Wyloguj" />
+          </items>
+        </MenuButton>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
