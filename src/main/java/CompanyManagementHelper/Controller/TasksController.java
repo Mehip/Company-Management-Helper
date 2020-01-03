@@ -3,8 +3,16 @@ package CompanyManagementHelper.Controller;
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
+
+import static CompanyManagementHelper.Controller.UserCreateEditController.userCreateEditController;
 
 public class TasksController {
 
@@ -26,7 +34,10 @@ public class TasksController {
   @FXML
   private TableColumn<TaskProperties, String> endTimeTaskTableColumn;
 
-  private TasksService tasksService;
+  @FXML
+  Button newTaskButton;
+
+  private static  TasksService tasksService;
 
   public void initialize(){
     this.tasksService = new TasksService();
@@ -37,5 +48,25 @@ public class TasksController {
     this.statusTableColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
     this.estimatedTimeTableColumn.setCellValueFactory(cellData -> cellData.getValue().estimatedTimeProperty());
     this.endTimeTaskTableColumn.setCellValueFactory(cellData -> cellData.getValue().endTimeTaskProperty());
+  }
+
+  @FXML
+  public void newTask(){
+    final Stage dialogWorker = new Stage();
+
+    try {
+      Scene scene = new Scene(tasksService.loadFXML("tasksCreateEdit"));
+      dialogWorker.setResizable(false);
+      dialogWorker.setTitle("Nowe zadanie");
+      dialogWorker.initStyle(StageStyle.DECORATED);
+      dialogWorker.setScene(scene);
+      dialogWorker.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void sendTaskService() {
+    TasksCreateEditController.tasksService = tasksService;
   }
 }

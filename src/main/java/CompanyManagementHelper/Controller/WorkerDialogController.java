@@ -52,7 +52,7 @@ public class WorkerDialogController {
       deleteButton.setVisible(false);
     }
   }
-  
+
   @FXML
   public void editUser() throws IOException {
     Stage stage = (Stage) editButton.getScene().getWindow();

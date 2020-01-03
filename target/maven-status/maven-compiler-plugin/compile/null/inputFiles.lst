@@ -1,4 +1,5 @@
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\App.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\TasksCreateEditController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Converter\UserConverterToProperties.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\LoginController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\UserEntity.java
@@ -18,7 +19,6 @@ D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\Tasks
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\UserCreateEditController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\TaskEntity.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\WorkerDialogService.java
-D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\MyProfilService.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\TasksController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\WorkerDialogController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\WorkHoursController.java

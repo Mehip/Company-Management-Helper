@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="325.9999000000025" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.TasksCreateEditController">
+  <children>
+    <TextArea fx:id="taskTextArea" layoutX="34.0" layoutY="60.0" prefHeight="84.0" prefWidth="532.0" wrapText="true" />
+    <Label layoutX="34.0" layoutY="33.0" text="Treść">
+      <font>
+        <Font name="System Bold" size="20.0" />
+      </font>
+    </Label>
+    <ComboBox fx:id="workerComboBox" disable="false" editable="true" layoutX="34.0" layoutY="200.0" prefWidth="530.0" promptText="Wykonawca" visibleRowCount="5" />
+    <TextField fx:id="estimatedTimeTextField" editable="true" focusTraversable="true" layoutX="34.0" layoutY="154.0" prefWidth="530.0" promptText="Przewidywany czas wykonania zadania w h" visible="true" />
+    <Button fx:id="saveButton" onAction="#saveTask" layoutX="441.0" layoutY="253.0" mnemonicParsing="false" prefWidth="123.0" text="Zapisz" />
+  </children>
+</AnchorPane>
