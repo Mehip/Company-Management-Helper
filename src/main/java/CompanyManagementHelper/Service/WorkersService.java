@@ -51,12 +51,10 @@ public class WorkersService {
     return moreInfoBtn;
   }
 
-  public Parent loadFXML(String fxml, UserProperties userProperties) throws IOException {
+  public Parent loadFXML(String fxml) throws IOException {
     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
     ResourceBundle bundle = ResourceBundle.getBundle("i18n.messages");
     fxmlLoader.setResources(bundle);
     return fxmlLoader.load();
   }
-
-
 }

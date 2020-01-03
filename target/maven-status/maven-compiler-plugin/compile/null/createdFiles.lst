@@ -7,6 +7,7 @@ CompanyManagementHelper\Converter\TaskConverterToProperties.class
 CompanyManagementHelper\Controller\WorkerDialogController.class
 CompanyManagementHelper\Service\MyProfilService.class
 CompanyManagementHelper\Utils\HibernateUtils.class
+CompanyManagementHelper\Controller\UserCreateEditController.class
 CompanyManagementHelper\Controller\LoginController.class
 CompanyManagementHelper\Controller\TasksController.class
 CompanyManagementHelper\Entity\WorkHoursEntity.class

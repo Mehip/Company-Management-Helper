@@ -1,8 +1,6 @@
 package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.App;
-import CompanyManagementHelper.Entity.UserEntity;
-import CompanyManagementHelper.Utils.SecurityUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;

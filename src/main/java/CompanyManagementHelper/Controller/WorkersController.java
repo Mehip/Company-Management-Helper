@@ -14,7 +14,6 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-import static CompanyManagementHelper.Controller.MyProfilController.myProfilController;
 import static CompanyManagementHelper.Controller.WorkerDialogController.workerDialogController;
 
 
@@ -44,7 +43,10 @@ public class WorkersController {
   @FXML
   TableColumn<UserProperties, UserProperties> moreTableColumn;
 
-  WorkersService workersService;
+  @FXML
+  Button addButton;
+
+  private static WorkersService workersService;
   private static UserProperties userProperties;
 
   public void initialize() {
@@ -65,31 +67,57 @@ public class WorkersController {
       @Override
       protected void updateItem(UserProperties item, boolean empty) {
         super.updateItem(item, empty);
-
-        if (!empty) {
-          setGraphic(moreInfoBtn);
-          moreInfoBtn.setOnAction(event -> {
-            userProperties = item;
-            final Stage dialogWorker = new Stage();
-
-            try {
-              Scene scene = new Scene(workersService.loadFXML("workerDialog", item));
-              dialogWorker.setResizable(false);
-              dialogWorker.setTitle("Pracownik");
-              dialogWorker.initStyle(StageStyle.DECORATED);
-              dialogWorker.setScene(scene);
-              dialogWorker.show();
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
-          });
+        if (empty) {
+          setGraphic(null);
+          return;
         }
+
+        setGraphic(moreInfoBtn);
+        moreInfoBtn.setOnAction(event -> {
+          userProperties = item;
+          final Stage dialogWorker = new Stage();
+
+          try {
+            Scene scene = new Scene(workersService.loadFXML("workerDialog"));
+            dialogWorker.setResizable(false);
+            dialogWorker.setTitle("Pracownik");
+            dialogWorker.initStyle(StageStyle.DECORATED);
+            dialogWorker.setScene(scene);
+            dialogWorker.show();
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        });
+
       }
     });
+  }
+
+  //TODO ADD NEW USER
+
+  @FXML
+  void userCreateEdit() {
+    final Stage dialogWorker = new Stage();
+
+    try {
+      Scene scene = new Scene(workersService.loadFXML("userCreateEdit"));
+      dialogWorker.setResizable(false);
+      dialogWorker.setTitle("Nowy pracownik");
+      dialogWorker.initStyle(StageStyle.DECORATED);
+      dialogWorker.setScene(scene);
+      dialogWorker.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   //For MyProfilController data
   public static void sendUserProperties() {
     workerDialogController.userProperties = userProperties;
+    WorkerDialogController.workersService = workersService;
+  }
+
+  public static void sendWorkersSerivce() {
+    UserCreateEditController.workersService = workersService;
   }
 }
