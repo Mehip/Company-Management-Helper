@@ -1,6 +1,7 @@
 package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Entity.UserEntity;
+import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkersService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,7 +18,7 @@ import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 public class UserCreateEditController {
 
   @FXML
-  TextField nameTextField, surnameTextField, cityTextField, dateOfBirthTextField, emailTextField, peselTextField, streetTextField, houseNumberTextField, flatNumberTextField, postalCodeTextField, numberBankAccountTextField, jobTimeTextField;
+  TextField nameTextField, surnameTextField, cityTextField, dateOfBirthTextField, emailTextField, peselTextField, streetTextField, houseNumberTextField, flatNumberTextField, postalCodeTextField, numberBankAccountTextField, jobTimeTextField, roleTextField, salaryTextField;
 
   @FXML
   PasswordField passwordField;
@@ -26,6 +27,7 @@ public class UserCreateEditController {
   Button saveButton;
 
   private UserEntity userEntity;
+  UserProperties userProperties;
   static WorkersService workersService;
   static UserCreateEditController userCreateEditController;
 
@@ -33,7 +35,34 @@ public class UserCreateEditController {
     userEntity = new UserEntity();
     userCreateEditController = this;
     workersService = userCreateEditController.workersService;
+    userProperties = userCreateEditController.userProperties;
     sendWorkersSerivce();
+    try{
+      System.out.println("UserID: " + userProperties.getId());
+      setUserInfo();
+    } catch (Exception e){
+      System.out.println("Adding new worker");
+    }
+  }
+
+  private void setUserInfo() {
+    System.out.println(userProperties.getEmail());
+    nameTextField.setText(userProperties.getName());
+    surnameTextField.setText(userProperties.getSurname());
+    cityTextField.setText(userProperties.getCity());
+    dateOfBirthTextField.setText(userProperties.getDateOfBirth());
+    emailTextField.setText(userProperties.getEmail());
+    peselTextField.setText(userProperties.getPesel());
+    streetTextField.setText(userProperties.getStreet());
+    passwordField.setText(userProperties.getPassword());
+    houseNumberTextField.setText(userProperties.getHouseNumber());
+    flatNumberTextField.setText(userProperties.getFlatNumber());
+    jobTimeTextField.setText(userProperties.getJobTime());
+    numberBankAccountTextField.setText(userProperties.getBankAccountNumber());
+    roleTextField.setText(userProperties.getRole());
+    postalCodeTextField.setText(userProperties.getPostalCode());
+    roleTextField.setText(userProperties.getRole());
+    salaryTextField.setText(userProperties.getSalary());
   }
 
   @FXML
@@ -52,6 +81,8 @@ public class UserCreateEditController {
     userEntity.setBankAccountNumber(numberBankAccountTextField.getText());
     userEntity.setPostalCode(postalCodeTextField.getText());
     userEntity.setWorkSince(LocalDate.now());
+    userEntity.setRole(roleTextField.getText());
+    userEntity.setSalary(Double.parseDouble(salaryTextField.getText()));
     insert(userEntity);
     workersService.init();
     Stage stage = (Stage) saveButton.getScene().getWindow();

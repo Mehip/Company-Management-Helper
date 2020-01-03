@@ -14,6 +14,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import static CompanyManagementHelper.Controller.UserCreateEditController.userCreateEditController;
 import static CompanyManagementHelper.Controller.WorkerDialogController.workerDialogController;
 
 
@@ -93,8 +94,6 @@ public class WorkersController {
     });
   }
 
-  //TODO ADD NEW USER
-
   @FXML
   void userCreateEdit() {
     final Stage dialogWorker = new Stage();
@@ -118,6 +117,7 @@ public class WorkersController {
   }
 
   public static void sendWorkersSerivce() {
+    userCreateEditController.userProperties = userProperties;
     UserCreateEditController.workersService = workersService;
   }
 }

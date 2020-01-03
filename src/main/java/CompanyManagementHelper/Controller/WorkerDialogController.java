@@ -4,9 +4,12 @@ import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkerDialogService;
 import CompanyManagementHelper.Service.WorkersService;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendUserProperties;
 
@@ -43,11 +46,17 @@ public class WorkerDialogController {
     bankAccountNumberLabel.setText("Nr konta bankowego: " + userProperties.getBankAccountNumber());
     adressLabel.setText(userProperties.getCity() + " " + userProperties.getStreet() + " " + userProperties.getHouseNumber() + " " + userProperties.getFlatNumber() + " " + userProperties.getPostalCode());
     salaryLabel.setText("Pensja: " + userProperties.getSalary());
-  }
 
-  //TODO EDYCJA PRACOWNIKA
+    if (userProperties.getEmail().equals("admin")) {
+      editButton.setVisible(false);
+      deleteButton.setVisible(false);
+    }
+  }
+  
   @FXML
-  public void editUser() {
+  public void editUser() throws IOException {
+    Stage stage = (Stage) editButton.getScene().getWindow();
+    stage.setScene(new Scene(workersService.loadFXML("userCreateEdit")));
   }
 
   @FXML
@@ -57,7 +66,7 @@ public class WorkerDialogController {
       workersService.init();
       Stage stage = (Stage) deleteButton.getScene().getWindow();
       stage.close();
-    }catch (NullPointerException e){
+    } catch (NullPointerException e) {
       e.getStackTrace();
     }
   }
