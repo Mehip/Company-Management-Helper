@@ -1,8 +1,6 @@
 package CompanyManagementHelper;
 
-import CompanyManagementHelper.Entity.TaskEntity;
 import CompanyManagementHelper.Entity.UserEntity;
-import CompanyManagementHelper.Entity.WorkHoursEntity;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,8 +13,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
-
-//import static CompanyManagementHelper.Utils.HibernateUtil.insert;
 
 /**
  * JavaFX App

@@ -7,7 +7,7 @@ import static CompanyManagementHelper.Utils.HibernateUtils.delete;
 
 public class WorkerDialogService {
 
-  public void deleteUser(UserProperties userProperties){
-    delete(userProperties.getId());
+  public static void deleteUserDB(UserProperties userProperties) {
+    delete(convertToUserEntity(userProperties));
   }
 }

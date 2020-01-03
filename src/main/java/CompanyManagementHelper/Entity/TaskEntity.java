@@ -3,7 +3,7 @@ package CompanyManagementHelper.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "zadania")
+@Table(name = "t_tasks")
 public class TaskEntity {
 
   @Id
@@ -11,19 +11,19 @@ public class TaskEntity {
   @Column(name = "id")
   private Integer id;
 
-  @Column(name = "zadanie")
+  @Column(name = "task")
   private String task;
 
   @Column(name = "status")
   private String status;
 
-  @Column(name = "przewidywany_czas_wykonania", nullable = true)
+  @Column(name = "estimated_time", nullable = true)
   private Double estimatedTime;
 
-  @Column(name = "wykonane_w_czasie", nullable = true)
+  @Column(name = "end_in_time", nullable = true)
   private Double endTimeTask;
 
-  @Column(name = "wykonawca", nullable = true)
+  @Column(name = "worker_id", nullable = true)
   private String idUser;
 
   public TaskEntity(String task, String status, Double estimatedTime, Double endTimeTask, String idUser) {

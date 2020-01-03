@@ -37,7 +37,7 @@ public class HibernateUtils {
   public static void delete(Object o) {
     Session session = getSession();
     session.beginTransaction();
-    session.delete((String) o, UserEntity.class);
+    session.delete(o);
     session.getTransaction().commit();
   }
 
