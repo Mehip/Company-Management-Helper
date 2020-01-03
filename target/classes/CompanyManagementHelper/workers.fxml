@@ -28,7 +28,7 @@
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="126.0" text="Imie" fx:id="nameTableColumn" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="213.0" text="Nazwisko" fx:id="surnameTableColumn" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="270.0" text="Email" fx:id="emailTableColumn" />
-            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="77.0" text="Wiek" fx:id="ageTableColumn" />
+            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="77.0" text="Urodzony" fx:id="ageTableColumn" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="70.0" text="Etat" fx:id="jobTimeTableColumn" />
             <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="53.0" text="Więcej" fx:id="moreTableColumn" />
           </columns>
