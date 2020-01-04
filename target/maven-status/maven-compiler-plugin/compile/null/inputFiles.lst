@@ -5,6 +5,7 @@ D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\Lo
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\UserEntity.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Utils\HibernateUtils.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Converter\TaskConverterToProperties.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\TaskDialogController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Properties\UserProperties.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Properties\TaskProperties.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\LoginService.java
@@ -18,7 +19,6 @@ D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\Wo
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\TasksService.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\UserCreateEditController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\TaskEntity.java
-D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\WorkerDialogService.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\TasksController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\WorkerDialogController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\WorkHoursController.java

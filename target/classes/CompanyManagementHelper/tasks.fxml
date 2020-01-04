@@ -27,7 +27,7 @@
           <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="153.0" text="Status" fx:id="statusTableColumn" />
           <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Szacowany czas" fx:id="estimatedTimeTableColumn" />
           <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="146.0" text="Przepracowany czas" fx:id="endTimeTaskTableColumn" />
-          <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="53.0" text="Więcej" />
+          <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="53.0" text="Więcej" fx:id="moreTableColumn" />
         </columns>
       </TableView>
       <Button fx:id="newTaskButton" onAction="#newTask" layoutX="1044.0" layoutY="69.0" mnemonicParsing="false" prefWidth="228.0" text="+ NOWE ZADANIE" />

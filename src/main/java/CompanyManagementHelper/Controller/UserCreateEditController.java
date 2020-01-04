@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendWorkersSerivce;
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
+import static CompanyManagementHelper.Utils.HibernateUtils.update;
 
 public class UserCreateEditController {
 
@@ -30,23 +31,22 @@ public class UserCreateEditController {
   UserProperties userProperties;
   static WorkersService workersService;
   static UserCreateEditController userCreateEditController;
+  private int workMode = 0;
 
   public void initialize() {
     userEntity = new UserEntity();
     userCreateEditController = this;
-    workersService = userCreateEditController.workersService;
-    userProperties = userCreateEditController.userProperties;
     sendWorkersSerivce();
-    try{
+    try {
       System.out.println("UserID: " + userProperties.getId());
       setUserInfo();
-    } catch (Exception e){
+    } catch (Exception e) {
+      workMode = 1;
       System.out.println("Adding new worker");
     }
   }
 
   private void setUserInfo() {
-    System.out.println(userProperties.getEmail());
     nameTextField.setText(userProperties.getName());
     surnameTextField.setText(userProperties.getSurname());
     cityTextField.setText(userProperties.getCity());
@@ -83,7 +83,13 @@ public class UserCreateEditController {
     userEntity.setWorkSince(LocalDate.now());
     userEntity.setRole(roleTextField.getText());
     userEntity.setSalary(Double.parseDouble(salaryTextField.getText()));
-    insert(userEntity);
+
+    if (workMode == 1) {
+      insert(userEntity);
+    } else {
+      userEntity.setId(userProperties.getId());
+      update(userEntity);
+    }
     workersService.init();
     Stage stage = (Stage) saveButton.getScene().getWindow();
     stage.close();

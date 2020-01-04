@@ -9,10 +9,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static CompanyManagementHelper.Converter.TaskConverterToProperties.convertToTaskEntity;
+import static CompanyManagementHelper.Utils.HibernateUtils.delete;
 
 public class TasksService {
 
@@ -47,5 +53,17 @@ public class TasksService {
     ResourceBundle bundle = ResourceBundle.getBundle("i18n.messages");
     fxmlLoader.setResources(bundle);
     return fxmlLoader.load();
+  }
+
+  public Button moreInfoButton(){
+    Button moreInfoBtn = new Button();
+    Image image = new Image(this.getClass().getResource("/images/information.png").toString());
+    ImageView imageView = new ImageView(image);
+    moreInfoBtn.setGraphic(imageView);
+    return moreInfoBtn;
+  }
+
+  public static void deleteTaskDB(TaskProperties taskProperties){
+    delete(convertToTaskEntity(taskProperties));
   }
 }

@@ -1,7 +1,6 @@
 package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.UserProperties;
-import CompanyManagementHelper.Service.WorkerDialogService;
 import CompanyManagementHelper.Service.WorkersService;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -28,8 +27,6 @@ public class WorkerDialogController {
   @FXML
   public void initialize() {
     workerDialogController = this;
-    workersService = workerDialogController.workersService;
-    userProperties = workerDialogController.userProperties;
     sendUserProperties();
     setUserInfo();
   }
@@ -62,7 +59,7 @@ public class WorkerDialogController {
   @FXML
   public void deleteUser() {
     try {
-      WorkerDialogService.deleteUserDB(this.userProperties);
+      workersService.deleteUserDB(this.userProperties);
       workersService.init();
       Stage stage = (Stage) deleteButton.getScene().getWindow();
       stage.close();

@@ -41,6 +41,13 @@ public class HibernateUtils {
     session.getTransaction().commit();
   }
 
+  public static void update(Object o) {
+    Session session = HibernateUtils.getSession();
+    session.beginTransaction();
+    session.update(o);
+    session.getTransaction().commit();
+  }
+
   public static <T> List<T> findAll(String className) {
     Session session = getSession();
     session.beginTransaction();

@@ -6,7 +6,6 @@ import CompanyManagementHelper.Service.TasksService;
 import CompanyManagementHelper.Service.WorkersService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -22,7 +21,7 @@ import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 public class TasksCreateEditController {
 
   @FXML
-  ComboBox<String> workerComboBox;
+  ComboBox<String> workerComboBox, statusComboBox;
 
   @FXML
   Button saveButton;
@@ -31,14 +30,14 @@ public class TasksCreateEditController {
   TextArea taskTextArea;
 
   @FXML
-  TextField estimatedTimeTextField;
+  TextField estimatedTimeTextField, endTimeTextField;
 
   WorkersService workersService;
   TaskEntity taskEntity;
   static TasksService tasksService;
   static TasksCreateEditController tasksCreateEditController;
 
-  public void initialize(){
+  public void initialize() {
     tasksCreateEditController = this;
     sendTaskService();
 
@@ -52,11 +51,11 @@ public class TasksCreateEditController {
 
   @FXML
   public void saveTask() {
-    taskEntity.setEstimatedTime(Double.parseDouble(estimatedTimeTextField.getText()));
-    taskEntity.setStatus("OCZEKIWANIE");
+    taskEntity.setStatus(statusComboBox.getValue());
     taskEntity.setTask(taskTextArea.getText());
     taskEntity.setIdUser(workerComboBox.getValue());
-    taskEntity.setEndTimeTask(0.0);
+    taskEntity.setEndTimeTask(Double.parseDouble(endTimeTextField.getText()));
+    taskEntity.setEstimatedTime(Double.parseDouble(estimatedTimeTextField.getText()));
     insert(taskEntity);
     tasksService.init();
 

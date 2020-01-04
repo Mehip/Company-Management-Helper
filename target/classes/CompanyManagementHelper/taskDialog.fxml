@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="325.9999000000025" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.TaskDialogController">
+  <children>
+    <TextArea fx:id="taskTextArea" editable="false" layoutX="34.0" layoutY="60.0" prefHeight="84.0" prefWidth="532.0" wrapText="true" />
+    <Label layoutX="34.0" layoutY="33.0" text="Treść">
+      <font>
+        <Font name="System Bold" size="20.0" />
+      </font>
+    </Label>
+    <Button fx:id="deleteButton" layoutX="443.0" layoutY="245.0" mnemonicParsing="false" onAction="#deleteTask" prefWidth="123.0" text="USUŃ" />
+    <Button fx:id="editButton" layoutX="300.0" layoutY="245.0" mnemonicParsing="false" onAction="#editTask" prefWidth="123.0" text="EDYTUJ" />
+    <TextField fx:id="workerTextField" editable="false" layoutX="34.0" layoutY="150.0" prefWidth="532.0" />
+    <TextField fx:id="estimatedTimeTextField" editable="false" layoutX="34.0" layoutY="185.0" prefWidth="246.0" />
+    <TextField fx:id="endTimeTextField" editable="false" layoutX="300.0" layoutY="185.0" prefWidth="266.0" />
+    <TextField fx:id="statusTextField" editable="false" layoutX="34.0" layoutY="219.0" prefWidth="246.0" />
+  </children>
+</AnchorPane>

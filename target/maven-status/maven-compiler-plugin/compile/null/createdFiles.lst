@@ -4,10 +4,12 @@ CompanyManagementHelper\Service\LoginService.class
 CompanyManagementHelper\Entity\TaskEntity.class
 CompanyManagementHelper\Controller\StatisticController.class
 CompanyManagementHelper\Converter\TaskConverterToProperties.class
+CompanyManagementHelper\Controller\TasksController$1.class
 CompanyManagementHelper\Controller\WorkerDialogController.class
 CompanyManagementHelper\Utils\HibernateUtils.class
 CompanyManagementHelper\Controller\UserCreateEditController.class
 CompanyManagementHelper\Controller\TasksCreateEditController.class
+CompanyManagementHelper\Controller\TaskDialogController.class
 CompanyManagementHelper\Controller\LoginController.class
 CompanyManagementHelper\Controller\TasksController.class
 CompanyManagementHelper\Entity\WorkHoursEntity.class
@@ -21,5 +23,4 @@ CompanyManagementHelper\Controller\WorkHoursController.class
 CompanyManagementHelper\Controller\MyProfilController.class
 CompanyManagementHelper\Controller\WorkersController.class
 CompanyManagementHelper\Service\WorkersService.class
-CompanyManagementHelper\Service\WorkerDialogService.class
 CompanyManagementHelper\Controller\WorkersController$1.class
