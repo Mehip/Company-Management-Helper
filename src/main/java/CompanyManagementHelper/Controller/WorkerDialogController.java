@@ -45,7 +45,7 @@ public class WorkerDialogController {
     salaryLabel.setText("Pensja: " + userProperties.getSalary());
 
     if (userProperties.getEmail().equals("admin")) {
-      editButton.setVisible(false);
+      editButton.setVisible(true);
       deleteButton.setVisible(false);
     }
   }
@@ -59,7 +59,7 @@ public class WorkerDialogController {
   @FXML
   public void deleteUser() {
     try {
-      workersService.deleteUserDB(this.userProperties);
+      WorkersService.deleteUserDB(this.userProperties);
       workersService.init();
       Stage stage = (Stage) deleteButton.getScene().getWindow();
       stage.close();

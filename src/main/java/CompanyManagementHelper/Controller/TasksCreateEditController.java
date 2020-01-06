@@ -2,6 +2,7 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Entity.TaskEntity;
 import CompanyManagementHelper.Entity.UserEntity;
+import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
 import CompanyManagementHelper.Service.WorkersService;
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 import static CompanyManagementHelper.Controller.TasksController.sendTaskService;
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
+import static CompanyManagementHelper.Utils.HibernateUtils.update;
 
 public class TasksCreateEditController {
 
@@ -32,21 +34,39 @@ public class TasksCreateEditController {
   @FXML
   TextField estimatedTimeTextField, endTimeTextField;
 
-  WorkersService workersService;
-  TaskEntity taskEntity;
+  private TaskEntity taskEntity;
   static TasksService tasksService;
+  static TaskProperties taskProperties;
   static TasksCreateEditController tasksCreateEditController;
+  private int workMode = 0;
 
   public void initialize() {
     tasksCreateEditController = this;
     sendTaskService();
 
     taskEntity = new TaskEntity();
-    this.workersService = new WorkersService();
+    WorkersService workersService = new WorkersService();
     workersService.init();
 
     ObservableList<String> users = FXCollections.observableArrayList(workersService.getItems().stream().map(UserEntity::getEmail).collect(Collectors.toList()));
     this.workerComboBox.setItems(users);
+
+    try {
+      System.out.println("TaskID: " + taskProperties.getId());
+      setInfo();
+    } catch (Exception e) {
+      System.out.println("Adding new task");
+    }
+  }
+
+  private void setInfo() {
+    taskTextArea.setText(taskProperties.getTask());
+    workerComboBox.setValue(taskProperties.getIdUser());
+    statusComboBox.setValue(taskProperties.getStatus());
+    estimatedTimeTextField.setText(taskProperties.getEstimatedTime());
+    endTimeTextField.setText(taskProperties.getEndTimeTask());
+    taskEntity.setId(taskProperties.getId());
+    workMode = 1;
   }
 
   @FXML
@@ -56,7 +76,13 @@ public class TasksCreateEditController {
     taskEntity.setIdUser(workerComboBox.getValue());
     taskEntity.setEndTimeTask(Double.parseDouble(endTimeTextField.getText()));
     taskEntity.setEstimatedTime(Double.parseDouble(estimatedTimeTextField.getText()));
-    insert(taskEntity);
+
+    if (workMode == 0) {
+      insert(taskEntity);
+    } else {
+      update(taskEntity);
+    }
+
     tasksService.init();
 
     Stage stage = (Stage) saveButton.getScene().getWindow();

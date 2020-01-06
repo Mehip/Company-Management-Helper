@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="325.9999000000025" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.TasksCreateEditController">
-  <children>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<AnchorPane prefHeight="325.9999000000025" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="CompanyManagementHelper.Controller.TasksCreateEditController">
     <Label layoutX="34.0" layoutY="33.0" text="Treść">
-      <font>
-        <Font name="System Bold" size="20.0" />
-      </font>
+        <font>
+            <Font name="System Bold" size="20.0"/>
+        </font>
     </Label>
-    <TextArea fx:id="taskTextArea" editable="true" layoutX="34.0" layoutY="60.0" prefHeight="84.0" prefWidth="532.0" wrapText="true" />
+    <TextArea fx:id="taskTextArea" layoutX="34.0" layoutY="60.0" prefHeight="84.0" prefWidth="532.0"
+              wrapText="true"/>
     <ComboBox fx:id="workerComboBox" layoutX="34.0" layoutY="151.0" prefWidth="532.0" promptText="WYKONAWCA">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
-      </items>
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Item 1"/>
+                <String fx:value="Item 2"/>
+                <String fx:value="Item 3"/>
+            </FXCollections>
+        </items>
     </ComboBox>
-    <TextField fx:id="estimatedTimeTextField" editable="true" layoutX="34.0" layoutY="185.0" prefWidth="246.0" promptText="Przewidywyany czas zakończenia" />
-    <TextField fx:id="endTimeTextField" editable="true" layoutX="300.0" layoutY="185.0" prefWidth="266.0" promptText="Przepracowany czas" />
-    <ComboBox fx:id="statusComboBox" focusTraversable="true" layoutX="34.0" layoutY="223.0" prefWidth="246.0" promptText="STATUS" visible="true" visibleRowCount="3">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="OCZEKIWANIE" />
-          <String fx:value="W TRAKCIE" />
-          <String fx:value="ZAKONCZONE" />
-        </FXCollections>
-      </items>
+    <TextField fx:id="estimatedTimeTextField" layoutX="34.0" layoutY="185.0" prefWidth="246.0"
+               promptText="Przewidywyany czas zakończenia"/>
+    <TextField fx:id="endTimeTextField" layoutX="300.0" layoutY="185.0" prefWidth="266.0"
+               promptText="Przepracowany czas"/>
+    <ComboBox fx:id="statusComboBox" layoutX="34.0" layoutY="223.0" prefWidth="246.0"
+              promptText="STATUS" visibleRowCount="3">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="OCZEKIWANIE"/>
+                <String fx:value="W TRAKCIE"/>
+                <String fx:value="ZAKONCZONE"/>
+            </FXCollections>
+        </items>
     </ComboBox>
-    <Button id="saveButton" fx:id="saveButton" layoutX="433.0" layoutY="248.0" mnemonicParsing="false" onAction="#saveTask" prefWidth="123.0" text="ZAPISZ" />
-  </children>
+    <Button id="saveButton" fx:id="saveButton" layoutX="433.0" layoutY="248.0" mnemonicParsing="false"
+            onAction="#saveTask" prefWidth="123.0" text="ZAPISZ"/>
 </AnchorPane>

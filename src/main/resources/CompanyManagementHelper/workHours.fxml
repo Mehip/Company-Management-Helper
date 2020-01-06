@@ -12,12 +12,14 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet ../style.css?>
 
-<AnchorPane prefHeight="684.9999000000025" prefWidth="1300" styleClass="main-background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.WorkHoursController">
+<AnchorPane prefHeight="684.9999000000025" prefWidth="1300" styleClass="main-background"
+            xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="CompanyManagementHelper.Controller.WorkHoursController">
     <children>
         <fx:include source="menu.fxml" layoutX="0.0" layoutY="1.0">
             <Label fx:id="topLabel" layoutX="650.0" layoutY="12.0" text="Godziny pracy" textFill="white">
                 <font>
-                    <Font size="25.0" />
+                    <Font size="25.0"/>
                 </font>
             </Label>
         </fx:include>

@@ -12,11 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static CompanyManagementHelper.Controller.TasksController.sendTaskProperties;
-import static CompanyManagementHelper.Utils.HibernateUtils.delete;
 
 public class TaskDialogController {
 
-  static TaskDialogController taskDialogController;
   static TaskProperties taskProperties;
   static TasksService tasksService;
 
@@ -29,8 +27,7 @@ public class TaskDialogController {
   @FXML
   TextField workerTextField, estimatedTimeTextField, endTimeTextField, statusTextField;
 
-  public void initialize(){
-    taskDialogController = this;
+  public void initialize() {
     sendTaskProperties();
     setinfo();
   }
@@ -45,7 +42,7 @@ public class TaskDialogController {
 
   @FXML
   public void deleteTask() {
-    tasksService.deleteTaskDB(taskProperties);
+    TasksService.deleteTaskDB(taskProperties);
     tasksService.init();
     Stage stage = (Stage) deleteButton.getScene().getWindow();
     stage.close();

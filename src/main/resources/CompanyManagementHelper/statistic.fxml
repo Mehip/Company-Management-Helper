@@ -3,6 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,14 +13,32 @@
 <?import javafx.scene.text.*?>
 <?scenebuilder-stylesheet ../style.css?>
 
-<AnchorPane prefHeight="684.9999000000025" prefWidth="1300" styleClass="main-background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.StatisticController">
-    <children>
-        <fx:include source="menu.fxml" layoutX="0.0" layoutY="1.0">
-            <Label fx:id="topLabel" layoutX="650.0" layoutY="12.0" text="Statystyki" textFill="white">
-                <font>
-                    <Font size="25.0" />
-                </font>
-            </Label>
-        </fx:include>
-    </children>
+<AnchorPane prefHeight="684.9999000000025" prefWidth="1300.0" styleClass="main-background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="CompanyManagementHelper.Controller.StatisticController">
+  <children>
+    <fx:include source="menu.fxml" layoutX="0.0" layoutY="1.0">
+      <Label fx:id="topLabel" layoutX="650.0" layoutY="12.0" text="Statystyki" textFill="WHITE">
+        <font>
+          <Font size="25.0" />
+        </font>
+      </Label>
+      <BarChart id="barChart" alternativeRowFillVisible="true" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" layoutX="201.0" layoutY="78.0" prefHeight="285.0" prefWidth="502.0" verticalGridLinesVisible="true" verticalZeroLineVisible="true">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <PieChart id="pieChart" labelsVisible="true" layoutX="755.0" layoutY="371.0" prefHeight="289.0" prefWidth="489.0" />
+      <LineChart id="lineChart" layoutX="755.0" layoutY="93.0" prefHeight="270.0" prefWidth="502.0000999999975">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <ListView id="listViewStatistcs" layoutX="201.0" layoutY="371.0" prefHeight="303.0" prefWidth="502.0" />
+    </fx:include>
+  </children>
 </AnchorPane>

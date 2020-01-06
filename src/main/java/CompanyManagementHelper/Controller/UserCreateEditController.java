@@ -63,6 +63,7 @@ public class UserCreateEditController {
     postalCodeTextField.setText(userProperties.getPostalCode());
     roleTextField.setText(userProperties.getRole());
     salaryTextField.setText(userProperties.getSalary());
+    userEntity.setId(userProperties.getId());
   }
 
   @FXML
@@ -74,7 +75,7 @@ public class UserCreateEditController {
     userEntity.setEmail(emailTextField.getText());
     userEntity.setPesel(peselTextField.getText());
     userEntity.setStreet(streetTextField.getText());
-    userEntity.setPassword(passwordField.getText());
+    userEntity.setPassword(String.valueOf(passwordField.getText().hashCode()));
     userEntity.setHouseNumber(houseNumberTextField.getText());
     userEntity.setFlatNumber(flatNumberTextField.getText());
     userEntity.setJobTime(Double.parseDouble(jobTimeTextField.getText()));
@@ -87,7 +88,6 @@ public class UserCreateEditController {
     if (workMode == 1) {
       insert(userEntity);
     } else {
-      userEntity.setId(userProperties.getId());
       update(userEntity);
     }
     workersService.init();

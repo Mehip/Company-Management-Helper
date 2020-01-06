@@ -3,22 +3,18 @@ package CompanyManagementHelper.Utils;
 public class SecurityUtils {
 
   public static boolean isAdmin(String role) {
-    return role.equals("Admin") ? true : false;
+    return role.equals("Admin");
   }
 
   public static boolean isBoss(String role) {
-    return role.equals("Szef") ? true : false;
+    return role.equals("Szef");
   }
 
   public static boolean isManager(String role) {
-    return role.equals("Manager") || role.equals("Kierownik") ? true : false;
+    return role.equals("Manager") || role.equals("Kierownik");
   }
 
   public static boolean isWorker(String role) {
-    if (!isAdmin(role) && !isManager(role) && !isBoss(role)) {
-      return true;
-    } else {
-      return false;
-    }
+    return !isAdmin(role) && !isManager(role) && !isBoss(role);
   }
 }

@@ -1,6 +1,5 @@
 package CompanyManagementHelper;
 
-import CompanyManagementHelper.Entity.UserEntity;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,10 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 
 /**
  * JavaFX App
@@ -29,6 +25,7 @@ public class App extends Application {
     stage.initStyle(StageStyle.DECORATED);
     stage.setTitle("Company Management Helper");
     stage.setScene(scene);
+    stage.setAlwaysOnTop(true);
     stage.show();
   }
 
@@ -67,7 +64,7 @@ public class App extends Application {
 //    insert(taskEntity9);
 //    insert(taskEntity10);
 //
-//    UserEntity userEntity = new UserEntity("admin", "", "admin","123", "", null, "", "", "", "", "", "", null, "", null, null);
+//    UserEntity userEntity = new UserEntity("admin", "", "admin","48690", "", null, "", "", "", "", "", "Admin", null, "", null, null);
 //    UserEntity userEntity1 = new UserEntity("Grzegorz", "Parapura", "gparapura@cmh.pl","gp", "00000000000", LocalDate.now(), "Warszawa", "Monte Cassino", "1", "38", "01-121", "Senior Java Developer", 14500.35, "34 1234 1234 1234 1234 1234 1234", 1.0, LocalDate.now());
 //    UserEntity userEntity2 = new UserEntity("Marcin", "Kozłowski", "mkozlowski@cmh.pl","mk", "11111111111", LocalDate.now(), "Warszawa", "Szybka", "3", "23", "01-143", "Junior Java Developer", 14500.35, "34 1234 1234 1234 1234 1234 1234", 1.0, LocalDate.now());
 //    UserEntity userEntity3 = new UserEntity("Mateusz", "Bałazy", "mbalazy@cmh.pl","mb", "22222222222", LocalDate.now(), "Warszawa", "Olbrachta", "67", "12", "01-495", "Analityk", 14500.35, "34 1234 1234 1234 1234 1234 1234", 1.0, LocalDate.now());
@@ -92,6 +89,10 @@ public class App extends Application {
 //WorkHoursEntity workHoursEntity = new WorkHoursEntity(1, LocalDateTime.now());
 //    insert(workHoursEntity);
 
+    //TODO Ladowanie
+    //TODO Statystyki
+    //TODO Role i widoki
+    //TODO Godziny pracy
     launch(args);
   }
 }

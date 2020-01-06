@@ -23,7 +23,7 @@ public class HibernateUtils {
     }
   }
 
-  public static Session getSession() throws HibernateException {
+  private static Session getSession() throws HibernateException {
     return ourSessionFactory.openSession();
   }
 

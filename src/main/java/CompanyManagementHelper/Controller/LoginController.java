@@ -3,13 +3,12 @@ package CompanyManagementHelper.Controller;
 import CompanyManagementHelper.App;
 import CompanyManagementHelper.Entity.UserEntity;
 import CompanyManagementHelper.Service.LoginService;
+import CompanyManagementHelper.Utils.ProfileRole;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
@@ -33,32 +32,23 @@ public class LoginController {
   private LoginService loginService;
 
   @FXML
-  void initialize() throws IOException {
+  void initialize() {
     loginService = new LoginService();
-
-  }
-
-  @FXML
-  void enter(KeyEvent event) throws IOException {
-    if (event.getCode().equals(KeyCode.ENTER)) {
-      loginButton.fire();
-    }
   }
 
   @FXML
   private void login() throws IOException {
-    //get userEntity for MyProfilController
-    userEntity = loginService.profilInfo(emailTextField.getText());
 
-    //TODO Hashowanie hasła
-    if (loginService.login(emailTextField.getText(), passwordTextField.getText())) {
-      App.setFXML("tasks");
-    } else
+    userEntity = loginService.profilInfo(emailTextField.getText());
+    //get userEntity for MyProfilController
+    ProfileRole.userRole = userEntity.getRole();
+    if (loginService.login(emailTextField.getText(), passwordTextField.getText())) App.setFXML("tasks");
+    else
       failLoginLabel.setVisible(true);
   }
 
   //For MyProfilController data
-  public static void sendUser() {
+  static void sendUser() {
     myProfilController.userEntity = userEntity;
   }
 }

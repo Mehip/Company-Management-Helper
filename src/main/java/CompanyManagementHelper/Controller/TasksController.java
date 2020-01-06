@@ -1,22 +1,19 @@
 package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.TaskProperties;
-import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.TasksService;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-
-import static CompanyManagementHelper.Controller.TaskDialogController.taskDialogController;
-import static CompanyManagementHelper.Controller.UserCreateEditController.userCreateEditController;
 
 public class TasksController {
 
@@ -44,13 +41,13 @@ public class TasksController {
   @FXML
   Button newTaskButton;
 
-  private static  TasksService tasksService;
+  private static TasksService tasksService;
   private static TaskProperties taskProperties;
 
-  public void initialize(){
-    this.tasksService = new TasksService();
+  public void initialize() {
+    tasksService = new TasksService();
     tasksService.init();
-    this.taskTableView.setItems(this.tasksService.getTaskEntityObservableList());
+    this.taskTableView.setItems(tasksService.getTaskEntityObservableList());
     this.workerIdTableColumn.setCellValueFactory(cellData -> cellData.getValue().idUserProperty());
     this.taskTableColumn.setCellValueFactory(cellData -> cellData.getValue().taskProperty());
     this.statusTableColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
@@ -80,6 +77,9 @@ public class TasksController {
             dialog.setTitle("Zadanie");
             dialog.initStyle(StageStyle.DECORATED);
             dialog.setScene(scene);
+            dialog.setAlwaysOnTop(true);
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.initOwner(newTaskButton.getScene().getWindow());
             dialog.show();
           } catch (IOException e) {
             e.printStackTrace();
@@ -91,27 +91,31 @@ public class TasksController {
   }
 
   @FXML
-  public void newTask(){
-    final Stage dialogWorker = new Stage();
+  public void newTask() {
+    final Stage dialog = new Stage();
 
     try {
       Scene scene = new Scene(tasksService.loadFXML("tasksCreateEdit"));
-      dialogWorker.setResizable(false);
-      dialogWorker.setTitle("Nowe zadanie");
-      dialogWorker.initStyle(StageStyle.DECORATED);
-      dialogWorker.setScene(scene);
-      dialogWorker.show();
+      dialog.setResizable(false);
+      dialog.setTitle("Nowe zadanie");
+      dialog.initStyle(StageStyle.DECORATED);
+      dialog.setScene(scene);
+      dialog.setAlwaysOnTop(true);
+      dialog.initModality(Modality.WINDOW_MODAL);
+      dialog.initOwner(newTaskButton.getScene().getWindow());
+      dialog.show();
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  public static void sendTaskService() {
+  static void sendTaskService() {
     TasksCreateEditController.tasksService = tasksService;
+    TasksCreateEditController.taskProperties = taskProperties;
   }
 
-  public static void sendTaskProperties() {
-    taskDialogController.taskProperties = taskProperties;
+  static void sendTaskProperties() {
+    TaskDialogController.taskProperties = taskProperties;
     TaskDialogController.tasksService = tasksService;
   }
 }

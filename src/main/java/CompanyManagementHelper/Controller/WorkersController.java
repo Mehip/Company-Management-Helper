@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -51,9 +52,9 @@ public class WorkersController {
   private static UserProperties userProperties;
 
   public void initialize() {
-    this.workersService = new WorkersService();
+    workersService = new WorkersService();
     workersService.init();
-    this.workerTableView.setItems(this.workersService.getUserPropertiesObservableList());
+    this.workerTableView.setItems(workersService.getUserPropertiesObservableList());
     this.nameTableColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
     this.surnameTableColumn.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
     this.emailTableColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
@@ -84,6 +85,9 @@ public class WorkersController {
             dialogWorker.setTitle("Pracownik");
             dialogWorker.initStyle(StageStyle.DECORATED);
             dialogWorker.setScene(scene);
+            dialogWorker.setAlwaysOnTop(true);
+            dialogWorker.initModality(Modality.WINDOW_MODAL);
+            dialogWorker.initOwner(addButton.getScene().getWindow());
             dialogWorker.show();
           } catch (IOException e) {
             e.printStackTrace();
@@ -104,6 +108,9 @@ public class WorkersController {
       dialogWorker.setTitle("Nowy pracownik");
       dialogWorker.initStyle(StageStyle.DECORATED);
       dialogWorker.setScene(scene);
+      dialogWorker.setAlwaysOnTop(true);
+      dialogWorker.initModality(Modality.WINDOW_MODAL);
+      dialogWorker.initOwner(addButton.getScene().getWindow());
       dialogWorker.show();
     } catch (IOException e) {
       e.printStackTrace();
@@ -111,12 +118,12 @@ public class WorkersController {
   }
 
   //For MyProfilController data
-  public static void sendUserProperties() {
+  static void sendUserProperties() {
     workerDialogController.userProperties = userProperties;
     WorkerDialogController.workersService = workersService;
   }
 
-  public static void sendWorkersSerivce() {
+  static void sendWorkersSerivce() {
     userCreateEditController.userProperties = userProperties;
     UserCreateEditController.workersService = workersService;
   }
