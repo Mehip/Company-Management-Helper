@@ -19,11 +19,6 @@ public class MenuController {
 
   @FXML
   void initialize(){
-    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
-      statisticButton.setVisible(false);
-      statisticButton.toFront();
-    }
-
     if(SecurityUtils.isAdmin(ProfileRole.userRole)){
       myProfile.setVisible(false);
     }

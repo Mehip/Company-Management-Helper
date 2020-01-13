@@ -91,8 +91,8 @@ public class App extends Application {
 
     //TODO Ladowanie
     //TODO Statystyki
-    //TODO Role i widoki
     //TODO Godziny pracy
+
     launch(args);
   }
 }

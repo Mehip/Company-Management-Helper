@@ -11,7 +11,7 @@ public class LoginService {
     return email.equals(userEntity.getEmail()) && password.hashCode() == Integer.parseInt(userEntity.getPassword());
   }
 
-  public UserEntity profilInfo(String email){
+  public UserEntity profilInfo(String email) {
     return findUserByEmail(email);
   }
 }

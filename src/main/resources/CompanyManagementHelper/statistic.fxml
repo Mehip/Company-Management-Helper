@@ -21,7 +21,7 @@
           <Font size="25.0" />
         </font>
       </Label>
-      <BarChart id="barChart" alternativeRowFillVisible="true" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" layoutX="201.0" layoutY="78.0" prefHeight="285.0" prefWidth="502.0" verticalGridLinesVisible="true" verticalZeroLineVisible="true">
+      <BarChart fx:id="barChart" alternativeRowFillVisible="true" horizontalGridLinesVisible="true" horizontalZeroLineVisible="true" layoutX="201.0" layoutY="78.0" prefHeight="285.0" prefWidth="502.0" verticalGridLinesVisible="true" verticalZeroLineVisible="true">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -29,8 +29,8 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <PieChart id="pieChart" labelsVisible="true" layoutX="755.0" layoutY="371.0" prefHeight="289.0" prefWidth="489.0" />
-      <LineChart id="lineChart" layoutX="755.0" layoutY="93.0" prefHeight="270.0" prefWidth="502.0000999999975">
+      <PieChart fx:id="pieChart" labelsVisible="true" layoutX="755.0" layoutY="371.0" prefHeight="289.0" prefWidth="489.0" />
+      <LineChart fx:id="lineChart" layoutX="755.0" layoutY="93.0" prefHeight="270.0" prefWidth="502.0000999999975">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -38,7 +38,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <ListView id="listViewStatistcs" layoutX="201.0" layoutY="371.0" prefHeight="303.0" prefWidth="502.0" />
+      <ListView fx:id="listViewStatistcs" layoutX="201.0" layoutY="371.0" prefHeight="303.0" prefWidth="502.0" />
     </fx:include>
   </children>
 </AnchorPane>

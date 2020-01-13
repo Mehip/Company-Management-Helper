@@ -2,6 +2,10 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
+import CompanyManagementHelper.Service.WorkersService;
+import CompanyManagementHelper.Utils.ProfileRole;
+import CompanyManagementHelper.Utils.SecurityUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +32,11 @@ public class TaskDialogController {
   TextField workerTextField, estimatedTimeTextField, endTimeTextField, statusTextField;
 
   public void initialize() {
+    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+      deleteButton.setVisible(false);
+      editButton.setVisible(false);
+    }
+
     sendTaskProperties();
     setinfo();
   }
@@ -42,8 +51,13 @@ public class TaskDialogController {
 
   @FXML
   public void deleteTask() {
-    TasksService.deleteTaskDB(taskProperties);
-    tasksService.init();
+    Thread thread = new Thread(() -> {
+      Platform.runLater(() -> {
+        TasksService.deleteTaskDB(taskProperties);
+        tasksService.init();
+      });
+    });
+    thread.start();
     Stage stage = (Stage) deleteButton.getScene().getWindow();
     stage.close();
   }

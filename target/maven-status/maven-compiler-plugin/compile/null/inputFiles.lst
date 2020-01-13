@@ -4,7 +4,10 @@ D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Converter\Use
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\UserEntity.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Utils\HibernateUtils.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Converter\TaskConverterToProperties.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\StatisticService.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Properties\UserProperties.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\WorkHoursService.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Properties\WorkHoursProperties.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\MyProfilController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Utils\SecurityUtils.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Utils\ProfileRole.java
@@ -19,6 +22,7 @@ D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\Login
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\MenuController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Entity\WorkHoursEntity.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\WorkersService.java
+D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Converter\HoursConverterToProperties.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\WorkersController.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Service\TasksService.java
 D:\Company-Management-Helper\src\main\java\CompanyManagementHelper\Controller\TasksController.java

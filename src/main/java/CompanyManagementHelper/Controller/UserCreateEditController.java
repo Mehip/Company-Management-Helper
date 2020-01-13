@@ -3,6 +3,7 @@ package CompanyManagementHelper.Controller;
 import CompanyManagementHelper.Entity.UserEntity;
 import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkersService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -86,11 +87,23 @@ public class UserCreateEditController {
     userEntity.setSalary(Double.parseDouble(salaryTextField.getText()));
 
     if (workMode == 1) {
-      insert(userEntity);
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          insert(userEntity);
+          workersService.init();
+        });
+      });
+      thread.start();
     } else {
-      update(userEntity);
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          update(userEntity);
+          workersService.init();
+        });
+      });
+      thread.start();
     }
-    workersService.init();
+
     Stage stage = (Stage) saveButton.getScene().getWindow();
     stage.close();
   }

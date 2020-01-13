@@ -5,6 +5,7 @@ import CompanyManagementHelper.Entity.UserEntity;
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
 import CompanyManagementHelper.Service.WorkersService;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 import static CompanyManagementHelper.Controller.TasksController.sendTaskService;
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 import static CompanyManagementHelper.Utils.HibernateUtils.update;
+import static java.lang.Thread.currentThread;
 
 public class TasksCreateEditController {
 
@@ -78,12 +80,22 @@ public class TasksCreateEditController {
     taskEntity.setEstimatedTime(Double.parseDouble(estimatedTimeTextField.getText()));
 
     if (workMode == 0) {
-      insert(taskEntity);
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          insert(taskEntity);
+          tasksService.init();
+        });
+      });
+      thread.start();
     } else {
-      update(taskEntity);
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          update(taskEntity);
+          tasksService.init();
+        });
+      });
+      thread.start();
     }
-
-    tasksService.init();
 
     Stage stage = (Stage) saveButton.getScene().getWindow();
     stage.close();

@@ -2,6 +2,7 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkersService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendUserProperties;
+import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 
 public class WorkerDialogController {
 
@@ -59,8 +61,14 @@ public class WorkerDialogController {
   @FXML
   public void deleteUser() {
     try {
-      WorkersService.deleteUserDB(this.userProperties);
-      workersService.init();
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          WorkersService.deleteUserDB(this.userProperties);
+          workersService.init();
+        });
+      });
+      thread.start();
+
       Stage stage = (Stage) deleteButton.getScene().getWindow();
       stage.close();
     } catch (NullPointerException e) {

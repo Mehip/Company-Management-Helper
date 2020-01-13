@@ -2,6 +2,8 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
+import CompanyManagementHelper.Utils.ProfileRole;
+import CompanyManagementHelper.Utils.SecurityUtils;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -45,6 +47,10 @@ public class TasksController {
   private static TaskProperties taskProperties;
 
   public void initialize() {
+    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+      newTaskButton.setVisible(false);
+    }
+
     tasksService = new TasksService();
     tasksService.init();
     this.taskTableView.setItems(tasksService.getTaskEntityObservableList());

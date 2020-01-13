@@ -2,6 +2,8 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkersService;
+import CompanyManagementHelper.Utils.ProfileRole;
+import CompanyManagementHelper.Utils.SecurityUtils;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -52,6 +54,13 @@ public class WorkersController {
   private static UserProperties userProperties;
 
   public void initialize() {
+    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+      ageTableColumn.setVisible(false);
+      jobTimeTableColumn.setVisible(false);
+      moreTableColumn.setVisible(false);
+      addButton.setVisible(false);
+    }
+
     workersService = new WorkersService();
     workersService.init();
     this.workerTableView.setItems(workersService.getUserPropertiesObservableList());
