@@ -1,6 +1,8 @@
 package CompanyManagementHelper.Utils;
 
+import CompanyManagementHelper.Entity.TaskEntity;
 import CompanyManagementHelper.Entity.UserEntity;
+import CompanyManagementHelper.Entity.WorkHoursEntity;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +11,7 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class HibernateUtils {
+public class HibernateUtils extends Thread{
   private static final SessionFactory ourSessionFactory;
 
   static {
@@ -23,7 +25,7 @@ public class HibernateUtils {
     }
   }
 
-  public static Session getSession() throws HibernateException {
+  private static Session getSession() throws HibernateException {
     return ourSessionFactory.openSession();
   }
 
@@ -38,6 +40,13 @@ public class HibernateUtils {
     Session session = getSession();
     session.beginTransaction();
     session.delete(o);
+    session.getTransaction().commit();
+  }
+
+  public static void update(Object o) {
+    Session session = HibernateUtils.getSession();
+    session.beginTransaction();
+    session.update(o);
     session.getTransaction().commit();
   }
 
@@ -56,5 +65,32 @@ public class HibernateUtils {
     UserEntity userEntity = (UserEntity) query.getSingleResult();
     session.getTransaction().commit();
     return userEntity;
+  }
+
+  public static List<TaskEntity> findTasksByStatus(String status){
+    Session session = getSession();
+    session.beginTransaction();
+    Query query = session.createQuery("FROM TaskEntity WHERE status='" + status + "'");
+    List<TaskEntity> taskEntity = (List<TaskEntity>) query.getResultList();
+    session.getTransaction().commit();
+    return taskEntity;
+  }
+
+  public static List<WorkHoursEntity> findWorkHoursByNullAndByUser(String user){
+    Session session = getSession();
+    session.beginTransaction();
+    Query query = session.createQuery("FROM WorkHoursEntity WHERE worker='" + user + "' AND endTime is null");
+    List<WorkHoursEntity> workHoursEntities = (List<WorkHoursEntity>) query.getResultList();
+    session.getTransaction().commit();
+    return workHoursEntities;
+  }
+
+  public static List<WorkHoursEntity> findAllWorkHoursWithoutNull(){
+    Session session = getSession();
+    session.beginTransaction();
+    Query query = session.createQuery("FROM WorkHoursEntity WHERE endTime is not null");
+    List<WorkHoursEntity> workHoursEntities = (List<WorkHoursEntity>) query.getResultList();
+    session.getTransaction().commit();
+    return workHoursEntities;
   }
 }

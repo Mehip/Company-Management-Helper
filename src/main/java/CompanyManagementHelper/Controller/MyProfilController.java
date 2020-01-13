@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import static CompanyManagementHelper.Controller.LoginController.sendUser;
-import static CompanyManagementHelper.Controller.MenuController.menuController;
 
 public class MyProfilController {
 
@@ -13,17 +12,13 @@ public class MyProfilController {
   Label nameLabel, surnameLabel, emailLabel, roleLabel, dateOfBirthLabel, adressLabel;
 
   UserEntity userEntity;
-  public static MyProfilController myProfilController;
-  private static String userRole;
+  static MyProfilController myProfilController;
 
   @FXML
   void initialize() {
     myProfilController = this;
-    userEntity = myProfilController.userEntity;
     sendUser();
     setProfil();
-    userRole = userEntity.getRole();
-//    System.out.println(userRole);
   }
 
   private void setProfil() {
@@ -33,9 +28,5 @@ public class MyProfilController {
     roleLabel.setText(userEntity.getRole());
     dateOfBirthLabel.setText(userEntity.getDateOfBirth().toString());
     adressLabel.setText(userEntity.getCity() + " " + userEntity.getStreet() + " " + userEntity.getHouseNumber() + "/" + userEntity.getFlatNumber());
-  }
-
-  public static void getUserRole(){
-    menuController.userRole = userRole;
   }
 }

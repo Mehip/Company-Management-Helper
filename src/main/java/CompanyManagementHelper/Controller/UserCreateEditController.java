@@ -3,6 +3,7 @@ package CompanyManagementHelper.Controller;
 import CompanyManagementHelper.Entity.UserEntity;
 import CompanyManagementHelper.Properties.UserProperties;
 import CompanyManagementHelper.Service.WorkersService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendWorkersSerivce;
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
+import static CompanyManagementHelper.Utils.HibernateUtils.update;
 
 public class UserCreateEditController {
 
@@ -30,23 +32,22 @@ public class UserCreateEditController {
   UserProperties userProperties;
   static WorkersService workersService;
   static UserCreateEditController userCreateEditController;
+  private int workMode = 0;
 
   public void initialize() {
     userEntity = new UserEntity();
     userCreateEditController = this;
-    workersService = userCreateEditController.workersService;
-    userProperties = userCreateEditController.userProperties;
     sendWorkersSerivce();
-    try{
+    try {
       System.out.println("UserID: " + userProperties.getId());
       setUserInfo();
-    } catch (Exception e){
+    } catch (Exception e) {
+      workMode = 1;
       System.out.println("Adding new worker");
     }
   }
 
   private void setUserInfo() {
-    System.out.println(userProperties.getEmail());
     nameTextField.setText(userProperties.getName());
     surnameTextField.setText(userProperties.getSurname());
     cityTextField.setText(userProperties.getCity());
@@ -63,6 +64,7 @@ public class UserCreateEditController {
     postalCodeTextField.setText(userProperties.getPostalCode());
     roleTextField.setText(userProperties.getRole());
     salaryTextField.setText(userProperties.getSalary());
+    userEntity.setId(userProperties.getId());
   }
 
   @FXML
@@ -74,7 +76,7 @@ public class UserCreateEditController {
     userEntity.setEmail(emailTextField.getText());
     userEntity.setPesel(peselTextField.getText());
     userEntity.setStreet(streetTextField.getText());
-    userEntity.setPassword(passwordField.getText());
+    userEntity.setPassword(String.valueOf(passwordField.getText().hashCode()));
     userEntity.setHouseNumber(houseNumberTextField.getText());
     userEntity.setFlatNumber(flatNumberTextField.getText());
     userEntity.setJobTime(Double.parseDouble(jobTimeTextField.getText()));
@@ -83,8 +85,25 @@ public class UserCreateEditController {
     userEntity.setWorkSince(LocalDate.now());
     userEntity.setRole(roleTextField.getText());
     userEntity.setSalary(Double.parseDouble(salaryTextField.getText()));
-    insert(userEntity);
-    workersService.init();
+
+    if (workMode == 1) {
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          insert(userEntity);
+          workersService.init();
+        });
+      });
+      thread.start();
+    } else {
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          update(userEntity);
+          workersService.init();
+        });
+      });
+      thread.start();
+    }
+
     Stage stage = (Stage) saveButton.getScene().getWindow();
     stage.close();
   }

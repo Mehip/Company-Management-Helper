@@ -1,8 +1,8 @@
 package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.UserProperties;
-import CompanyManagementHelper.Service.WorkerDialogService;
 import CompanyManagementHelper.Service.WorkersService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendUserProperties;
+import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 
 public class WorkerDialogController {
 
@@ -28,8 +29,6 @@ public class WorkerDialogController {
   @FXML
   public void initialize() {
     workerDialogController = this;
-    workersService = workerDialogController.workersService;
-    userProperties = workerDialogController.userProperties;
     sendUserProperties();
     setUserInfo();
   }
@@ -48,11 +47,11 @@ public class WorkerDialogController {
     salaryLabel.setText("Pensja: " + userProperties.getSalary());
 
     if (userProperties.getEmail().equals("admin")) {
-      editButton.setVisible(false);
+      editButton.setVisible(true);
       deleteButton.setVisible(false);
     }
   }
-  
+
   @FXML
   public void editUser() throws IOException {
     Stage stage = (Stage) editButton.getScene().getWindow();
@@ -62,8 +61,14 @@ public class WorkerDialogController {
   @FXML
   public void deleteUser() {
     try {
-      WorkerDialogService.deleteUserDB(this.userProperties);
-      workersService.init();
+      Thread thread = new Thread(() -> {
+        Platform.runLater(() -> {
+          WorkersService.deleteUserDB(this.userProperties);
+          workersService.init();
+        });
+      });
+      thread.start();
+
       Stage stage = (Stage) deleteButton.getScene().getWindow();
       stage.close();
     } catch (NullPointerException e) {

@@ -13,7 +13,7 @@ public class WorkHoursEntity {
   Integer id;
 
   @Column(name = "worker_id")
-  Integer id_worker;
+  String worker;
 
   @Column(name = "start_time")
   LocalDateTime startTime;
@@ -21,8 +21,8 @@ public class WorkHoursEntity {
   @Column(name = "end_time")
   LocalDateTime endTime;
 
-  public WorkHoursEntity(Integer id_worker, LocalDateTime startTime) {
-    this.id_worker = id_worker;
+  public WorkHoursEntity(String worker, LocalDateTime startTime) {
+    this.worker = worker;
     this.startTime = startTime;
   }
 
@@ -37,12 +37,12 @@ public class WorkHoursEntity {
     this.id = id;
   }
 
-  public Integer getId_worker() {
-    return id_worker;
+  public String getId_worker() {
+    return worker;
   }
 
-  public void setId_worker(Integer id_worker) {
-    this.id_worker = id_worker;
+  public void setId_worker(String worker) {
+    this.worker = worker;
   }
 
   public LocalDateTime getStartTime() {

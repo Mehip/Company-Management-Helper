@@ -7,16 +7,11 @@ import static CompanyManagementHelper.Utils.HibernateUtils.findUserByEmail;
 public class LoginService {
 
   public boolean login(String email, String password) {
-    //TODO Hashowanie hasła
     UserEntity userEntity = findUserByEmail(email);
-    if (email.equals(userEntity.getEmail()) && password.equals(userEntity.getPassword())) {
-      return true;
-    } else {
-      return false;
-    }
+    return email.equals(userEntity.getEmail()) && password.hashCode() == Integer.parseInt(userEntity.getPassword());
   }
 
-  public UserEntity profilInfo(String email){
+  public UserEntity profilInfo(String email) {
     return findUserByEmail(email);
   }
 }

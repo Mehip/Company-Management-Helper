@@ -7,23 +7,23 @@ import javafx.beans.property.StringProperty;
 
 public class UserProperties {
 
-  IntegerProperty id = new SimpleIntegerProperty();
-  StringProperty name = new SimpleStringProperty();
-  StringProperty surname = new SimpleStringProperty();
-  StringProperty email = new SimpleStringProperty();
-  StringProperty password = new SimpleStringProperty();
-  StringProperty pesel = new SimpleStringProperty();
-  StringProperty dateOfBirth = new SimpleStringProperty();
-  StringProperty city = new SimpleStringProperty();
-  StringProperty street = new SimpleStringProperty();
-  StringProperty houseNumber = new SimpleStringProperty();
-  StringProperty flatNumber = new SimpleStringProperty();
-  StringProperty postalCode = new SimpleStringProperty();
-  StringProperty role = new SimpleStringProperty();
-  StringProperty salary = new SimpleStringProperty();
-  StringProperty bankAccountNumber = new SimpleStringProperty();
-  StringProperty jobTime = new SimpleStringProperty();
-  StringProperty workSince = new SimpleStringProperty();
+  private IntegerProperty id = new SimpleIntegerProperty();
+  private StringProperty name = new SimpleStringProperty();
+  private StringProperty surname = new SimpleStringProperty();
+  private StringProperty email = new SimpleStringProperty();
+  private StringProperty password = new SimpleStringProperty();
+  private StringProperty pesel = new SimpleStringProperty();
+  private StringProperty dateOfBirth = new SimpleStringProperty();
+  private StringProperty city = new SimpleStringProperty();
+  private StringProperty street = new SimpleStringProperty();
+  private StringProperty houseNumber = new SimpleStringProperty();
+  private StringProperty flatNumber = new SimpleStringProperty();
+  private StringProperty postalCode = new SimpleStringProperty();
+  private StringProperty role = new SimpleStringProperty();
+  private StringProperty salary = new SimpleStringProperty();
+  private StringProperty bankAccountNumber = new SimpleStringProperty();
+  private StringProperty jobTime = new SimpleStringProperty();
+  private StringProperty workSince = new SimpleStringProperty();
 
   public int getId() {
     return id.get();

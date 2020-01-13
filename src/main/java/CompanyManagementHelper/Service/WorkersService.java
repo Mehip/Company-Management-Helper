@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static CompanyManagementHelper.Converter.UserConverterToProperties.convertToUserEntity;
+import static CompanyManagementHelper.Utils.HibernateUtils.delete;
+
 public class WorkersService {
   private ObservableList<UserProperties> userPropertiesObservableList = FXCollections.observableArrayList();
 
@@ -56,5 +59,9 @@ public class WorkersService {
     ResourceBundle bundle = ResourceBundle.getBundle("i18n.messages");
     fxmlLoader.setResources(bundle);
     return fxmlLoader.load();
+  }
+
+  public static void deleteUserDB(UserProperties userProperties) {
+    delete(convertToUserEntity(userProperties));
   }
 }
