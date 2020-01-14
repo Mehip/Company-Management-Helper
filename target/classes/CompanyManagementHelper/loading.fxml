@@ -6,14 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="229.9998779296875" prefHeight="200.0001220703125" prefWidth="229.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane minWidth="229.9998779296875" prefHeight="307.0001220703125" prefWidth="453.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <ImageView fitHeight="200.0001220703125" fitWidth="229.99989318847656" layoutX="0.0" layoutY="0.0" pickOnBounds="true" preserveRatio="false" visible="false">
-      <image>
-        <Image url="@../images/loading-68.gif" />
-      </image>
-    </ImageView>
-    <Label layoutX="72.0" layoutY="90.0" text="ŁADOWANIE" />
+    <Label layoutX="150.0" layoutY="125.0" prefHeight="52.0" prefWidth="153.0" text="LOADING...">
+      <font>
+        <Font size="30.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static CompanyManagementHelper.Controller.WorkersController.sendUserProperties;
-import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 
 public class WorkerDialogController {
 

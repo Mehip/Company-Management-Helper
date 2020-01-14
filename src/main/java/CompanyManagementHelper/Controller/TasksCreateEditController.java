@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 import static CompanyManagementHelper.Controller.TasksController.sendTaskService;
 import static CompanyManagementHelper.Utils.HibernateUtils.insert;
 import static CompanyManagementHelper.Utils.HibernateUtils.update;
-import static java.lang.Thread.currentThread;
 
 public class TasksCreateEditController {
 

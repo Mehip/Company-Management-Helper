@@ -1,6 +1,7 @@
 package CompanyManagementHelper;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,14 +20,23 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
-    scene = new Scene(loadFXML("login"));
-    scene.getStylesheets().add("style.css");
-    stage.setResizable(false);
-    stage.initStyle(StageStyle.DECORATED);
-    stage.setTitle("Company Management Helper");
-    stage.setScene(scene);
-    stage.setAlwaysOnTop(true);
-    stage.show();
+    Thread thread = new Thread(() -> {
+      Platform.runLater(() -> {
+        try {
+          scene = new Scene(loadFXML("login"));
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+        scene.getStylesheets().add("style.css");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Company Management Helper");
+        stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
+        stage.show();
+      });
+    });
+    thread.start();
   }
 
   public static void setFXML(String fxml) throws IOException {

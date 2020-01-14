@@ -20,7 +20,8 @@
         <TextField fx:id="emailTextField" layoutX="530.0" layoutY="226.0" prefWidth="200.0" promptText="%lblEmail" text="" />
         <PasswordField fx:id="passwordTextField" layoutX="530.0" layoutY="281.0" prefWidth="200.0" promptText="%lblPassword" text="" />
         <Button fx:id="loginButton" layoutX="765.0" layoutY="280.0" mnemonicParsing="false" onAction="#login" prefWidth="97.0" styleClass="login-button" text="%btnLogIn" />
-        <Label fx:id="failLoginLabel" layoutX="249.0" layoutY="334.0" styleClass="login-fail-label" text="Wprowadzono błędny login lub hasło! Spróbuj jeszcze raz!" visible="false" />
+        <Label fx:id="failLoginLabel" layoutX="500.0" layoutY="334.0" styleClass="login-fail-label" text="Wprowadzono błędny login lub hasło!" visible="false" />
+        <Label fx:id="failLoginLabel1" layoutX="500.0" layoutY="360.0" styleClass="login-fail-label" text="Spróbuj jeszcze raz!" visible="false" />
       </children>
     </Pane>
   </children>

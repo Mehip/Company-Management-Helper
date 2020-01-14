@@ -21,25 +21,18 @@ public class TasksController {
 
   @FXML
   private TableView<TaskProperties> taskTableView;
-
   @FXML
   private TableColumn<TaskProperties, String> workerIdTableColumn;
-
   @FXML
   private TableColumn<TaskProperties, String> taskTableColumn;
-
   @FXML
   private TableColumn<TaskProperties, String> statusTableColumn;
-
   @FXML
   private TableColumn<TaskProperties, String> estimatedTimeTableColumn;
-
   @FXML
   private TableColumn<TaskProperties, String> endTimeTaskTableColumn;
-
   @FXML
   private TableColumn<TaskProperties, TaskProperties> moreTableColumn;
-
   @FXML
   Button newTaskButton;
 
@@ -47,7 +40,7 @@ public class TasksController {
   private static TaskProperties taskProperties;
 
   public void initialize() {
-    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+    if (SecurityUtils.isWorker(ProfileRole.userRole)) {
       newTaskButton.setVisible(false);
     }
 
@@ -91,7 +84,6 @@ public class TasksController {
             e.printStackTrace();
           }
         });
-
       }
     });
   }

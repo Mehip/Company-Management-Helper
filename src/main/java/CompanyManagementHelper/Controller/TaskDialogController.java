@@ -2,7 +2,6 @@ package CompanyManagementHelper.Controller;
 
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Service.TasksService;
-import CompanyManagementHelper.Service.WorkersService;
 import CompanyManagementHelper.Utils.ProfileRole;
 import CompanyManagementHelper.Utils.SecurityUtils;
 import javafx.application.Platform;
@@ -24,15 +23,13 @@ public class TaskDialogController {
 
   @FXML
   TextArea taskTextArea;
-
   @FXML
   Button deleteButton, editButton;
-
   @FXML
   TextField workerTextField, estimatedTimeTextField, endTimeTextField, statusTextField;
 
   public void initialize() {
-    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+    if (SecurityUtils.isWorker(ProfileRole.userRole)) {
       deleteButton.setVisible(false);
       editButton.setVisible(false);
     }
