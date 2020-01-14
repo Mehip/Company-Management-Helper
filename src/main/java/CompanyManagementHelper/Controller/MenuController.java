@@ -13,13 +13,12 @@ public class MenuController {
 
   @FXML
   Button statisticButton, tasksButton, workerButton, workHoursButton, aboutAplicationButton;
-
   @FXML
   MenuItem myProfile;
 
   @FXML
-  void initialize(){
-    if(SecurityUtils.isAdmin(ProfileRole.userRole)){
+  void initialize() {
+    if (SecurityUtils.isAdmin(ProfileRole.userRole)) {
       myProfile.setVisible(false);
     }
   }

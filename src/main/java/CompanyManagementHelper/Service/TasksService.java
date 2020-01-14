@@ -1,10 +1,10 @@
 package CompanyManagementHelper.Service;
 
 import CompanyManagementHelper.App;
+import CompanyManagementHelper.Converter.TaskConverterToProperties;
 import CompanyManagementHelper.Entity.TaskEntity;
 import CompanyManagementHelper.Properties.TaskProperties;
 import CompanyManagementHelper.Utils.HibernateUtils;
-import CompanyManagementHelper.Converter.TaskConverterToProperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +55,7 @@ public class TasksService {
     return fxmlLoader.load();
   }
 
-  public Button moreInfoButton(){
+  public Button moreInfoButton() {
     Button moreInfoBtn = new Button();
     Image image = new Image(this.getClass().getResource("/images/information.png").toString());
     ImageView imageView = new ImageView(image);
@@ -63,7 +63,7 @@ public class TasksService {
     return moreInfoBtn;
   }
 
-  public static void deleteTaskDB(TaskProperties taskProperties){
+  public static void deleteTaskDB(TaskProperties taskProperties) {
     delete(convertToTaskEntity(taskProperties));
   }
 }

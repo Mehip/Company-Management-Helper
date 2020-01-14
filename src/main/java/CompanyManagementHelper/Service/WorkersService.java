@@ -46,7 +46,7 @@ public class WorkersService {
     return HibernateUtils.findAll("UserEntity");
   }
 
-  public Button moreInfoButton(){
+  public Button moreInfoButton() {
     Button moreInfoBtn = new Button();
     Image image = new Image(this.getClass().getResource("/images/information.png").toString());
     ImageView imageView = new ImageView(image);

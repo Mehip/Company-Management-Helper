@@ -54,7 +54,7 @@ public class WorkersController {
   private static UserProperties userProperties;
 
   public void initialize() {
-    if(!(SecurityUtils.isAdmin(ProfileRole.userRole) || SecurityUtils.isBoss(ProfileRole.userRole) || SecurityUtils.isManager(ProfileRole.userRole))){
+    if (SecurityUtils.isWorker(ProfileRole.userRole)) {
       ageTableColumn.setVisible(false);
       jobTimeTableColumn.setVisible(false);
       moreTableColumn.setVisible(false);
